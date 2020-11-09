@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use \App\Models\Customer;
+use \App\Models\CustomerStatus;
+use \App\Models\Order;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        Customer::factory()
+            ->times(10)
+            ->has(Order::factory()->count(30))
+            ->create();
     }
 }
