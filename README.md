@@ -1,4 +1,4 @@
-## Norwex Code Challenge
+## Code Challenge
 
 - Apache  2.4.46
 - Laravel  8.13.0
