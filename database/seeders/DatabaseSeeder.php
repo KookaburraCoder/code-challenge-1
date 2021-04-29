@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
     {
 
         Customer::factory()
-            ->times(10)
-            ->has(Order::factory()->count(30))
+            ->times(1000)
+            ->has(Order::factory()->count(rand(1, 75)))
             ->create();
     }
 }

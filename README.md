@@ -7,26 +7,28 @@
 
 # Setup
 ## Database
-```
+```sql
 CREATE DATABASE norwex;
-```
-## User
-```
-CREATE USER developer@localhost IDENTIFIED BY 'norwex';
-
+CREATE USER 'developer'@'127.0.0.1' IDENTIFIED BY 'norwex';
 GRANT ALL PRIVILEGES ON norwex.* TO 'developer'@'localhost';
-
 FLUSH PRIVILEGES;
 ```
 
 ## How to Run
-
+Install the composer and node packages
+```bash
+composer install
+npm install
 ```
+Copy over the environment file and run the laravel commands
+```bash
+cp .env.example .env
+php artisan key:generate
 php artisan migrate
 php artisan db:seed
 php artisan serve
 ```
-Then go to http://localhost:8000/
+Then go to http://127.0.0.1:8000/
 
 You should see a simple table in the middle of the screen, showing 10 users all coloured to match the conditions.
 
@@ -38,3 +40,6 @@ Create a route, controller and any other supporting classes, services or helpers
 - ‘Active’ customers who have not placed any orders during the last 12 months in ORANGE
 - ‘Active’ customers who have placed a minimum of RM200.00 in sales over the last 3 months in GREEN (check the ‘OrderStatus’ and make sure you are only including ‘Completed’ orders in this calculation)
 - Include a total order count for each customer
+
+## Known Issues
+- Number of orders per customer are set to the same amount in the database seeder... unsure how to handle this, will review later.
